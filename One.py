@@ -1,18 +1,18 @@
 import pandas as pd
 
-df=pd.read_csv('ogrenciler.csv')
+df=pd.read_csv('students.csv')
 
-def notKontrol(x):
+def pointCheck(x):
     if x >= 50:
-        return("gecti")
+        return("pass")
     else:
-        return("kaldı")
+        return("fail")
 
-df['gecme durumu']=df['not'].apply(notKontrol)
+df['situtation']=df['point'].apply(pointCheck)
 print(df)
-en_yuksek_not_kım=df['not'].idxmax()
-en_dusuk_not_kım=df['not'].idxmin()
-print("en yuksek not alan ogrenci:",df['isim'][en_yuksek_not_kım],df['not'].max())
-print("en dusuk not alan ogrenci:",df['isim'][en_dusuk_not_kım],df['not'].min())
-print("ogrenci notlari:\n",df)
-print("ortalama:",df['not'].mean())
+max_Point=df['point'].idxmax()
+mın_Point=df['point'].idxmin()
+print("The student with the highest marks:",df['name'][max_Point],df['point'].max())
+print("The student with the lowest grades:",df['name'][mın_Point],df['point'].min())
+print("Students Points:\n",df)
+print("avarage Point:",df['point'].mean())
